@@ -18,13 +18,13 @@ pipeline {
     post {
         always {
             // Publica o relatório Allure
-            allure([
+           allure([
                 includeProperties: false,
                 jdk: '',
                 results: [[path: 'output/allure']],
-                reportBuildPolicy: 'ALWAYS',
-                reportVersion: '2.13.8'
+                reportBuildPolicy: 'ALWAYS'
             ])
+
         }
     }
 }
