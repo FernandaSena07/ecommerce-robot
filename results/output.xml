@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.12.6 on win32)" generated="2025-09-18T10:53:25.363947" rpa="false" schemaversion="5">
+<suite id="s1" name="Ecommerce-Robot" source="C:\Users\FernandaSenadeSouza\ecommerce-robot">
+<suite id="s1-s1" name="Tests" source="C:\Users\FernandaSenadeSouza\ecommerce-robot\tests">
+<suite id="s1-s1-s1" name="Products Tests" source="C:\Users\FernandaSenadeSouza\ecommerce-robot\tests\products_tests.robot">
+<test id="s1-s1-s1-t1" name="Verificar lista de produtos" line="9">
+<kw name="Open Products Page" owner="keywords">
+<kw name="Open Browser To Login Page" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-18T10:53:25.890274" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002DC91BA93D0&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-18T10:53:25.889141" elapsed="0.001637"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-password-manager-reauthentication</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-09-18T10:53:25.890778" elapsed="0.000000"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-save-password-bubble</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-09-18T10:53:25.890778" elapsed="0.001025"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:25.891803" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${URL}</arg>
+<arg>chrome</arg>
+<arg>options=${options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-09-18T10:53:25.891803" elapsed="3.729251"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-09-18T10:53:29.622520" elapsed="0.037456"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-18T10:53:29.662372" elapsed="0.056829"/>
+</kw>
+<doc>Abre o Chrome e vai para a página de login</doc>
+<status status="PASS" start="2025-09-18T10:53:25.888114" elapsed="3.831087"/>
+</kw>
+<kw name="Login With Credentials" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:29.721212" level="INFO">Typing text 'standard_user' into text field 'id:user-name'.</msg>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:29.720210" elapsed="0.227276"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:29.948488" level="INFO">Typing text 'secret_sauce' into text field 'id:password'.</msg>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:29.948488" elapsed="0.165864"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.116593" level="INFO">Clicking button 'id:login-button'.</msg>
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.115546" elapsed="0.164763"/>
+</kw>
+<arg>standard_user</arg>
+<arg>secret_sauce</arg>
+<status status="PASS" start="2025-09-18T10:53:29.719201" elapsed="0.562155"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PRODUCT_LIST}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.281356" elapsed="0.021430"/>
+</kw>
+<doc>Abre a página de produtos após login</doc>
+<status status="PASS" start="2025-09-18T10:53:25.888114" elapsed="4.414672"/>
+</kw>
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.314320" level="INFO">Current page contains element 'css:.inventory_list'.</msg>
+<arg>${PRODUCT_LIST}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.302786" elapsed="0.012542"/>
+</kw>
+<kw name="Get Product Details" owner="keywords">
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.332385" level="INFO">@{name_elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.27")&gt; | &lt;selenium.webdr...</msg>
+<var>@{name_elements}</var>
+<arg>${PRODUCT_NAME}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.317336" elapsed="0.016332"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-09-18T10:53:30.334676" level="INFO">@{names} = [ ]</msg>
+<var>@{names}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.333668" elapsed="0.001008"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.357704" level="INFO">${text} = Sauce Labs Backpack</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.335677" elapsed="0.023197"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${names}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.358874" elapsed="0.001010"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.27")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.335677" elapsed="0.024207"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.374642" level="INFO">${text} = Sauce Labs Bike Light</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.361065" elapsed="0.014736"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${names}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.375801" elapsed="0.001014"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.28")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.359884" elapsed="0.016931"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.390014" level="INFO">${text} = Sauce Labs Bolt T-Shirt</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.377816" elapsed="0.013360"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${names}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.391176" elapsed="0.001014"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.29")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.376815" elapsed="0.015375"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.403780" level="INFO">${text} = Sauce Labs Fleece Jacket</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.393518" elapsed="0.010262"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${names}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.403780" elapsed="0.001304"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.30")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.392190" elapsed="0.012894"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.414455" level="INFO">${text} = Sauce Labs Onesie</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.405084" elapsed="0.009371"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${names}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.414455" elapsed="0.001082"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.31")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.405084" elapsed="0.010453"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.423302" level="INFO">${text} = Test.allTheThings() T-Shirt (Red)</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.415537" elapsed="0.007765"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${names}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.423302" elapsed="0.000996"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.32")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.415537" elapsed="0.009806"/>
+</iter>
+<var>${el}</var>
+<value>@{name_elements}</value>
+<status status="PASS" start="2025-09-18T10:53:30.334676" elapsed="0.090667"/>
+</for>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.437509" level="INFO">@{price_elements} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.33")&gt; | &lt;selenium.webdr...</msg>
+<var>@{price_elements}</var>
+<arg>${PRODUCT_PRICE}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.425343" elapsed="0.012166"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-09-18T10:53:30.438822" level="INFO">@{prices} = [ ]</msg>
+<var>@{prices}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.437509" elapsed="0.001313"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.449165" level="INFO">${text} = $29.99</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.440226" elapsed="0.010202"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${prices}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.450428" elapsed="0.001011"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.33")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.440226" elapsed="0.011213"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.463171" level="INFO">${text} = $9.99</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.451439" elapsed="0.011732"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${prices}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.464603" elapsed="0.001159"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.34")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.451439" elapsed="0.014323"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.478613" level="INFO">${text} = $15.99</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.466819" elapsed="0.012828"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${prices}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.480967" elapsed="0.001207"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.35")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.465762" elapsed="0.016412"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.491581" level="INFO">${text} = $49.99</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.483419" elapsed="0.008162"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${prices}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.491581" elapsed="0.001004"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.36")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.482174" elapsed="0.010411"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.503019" level="INFO">${text} = $7.99</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.493584" elapsed="0.009435"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${prices}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.503019" elapsed="0.001008"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.37")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.492585" elapsed="0.011442"/>
+</iter>
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.514985" level="INFO">${text} = $15.99</msg>
+<var>${text}</var>
+<arg>${el}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.505295" elapsed="0.010687"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${prices}</arg>
+<arg>${text}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.515982" elapsed="0.001002"/>
+</kw>
+<var name="${el}">&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.38")&gt;</var>
+<status status="PASS" start="2025-09-18T10:53:30.504027" elapsed="0.012957"/>
+</iter>
+<var>${el}</var>
+<value>@{price_elements}</value>
+<status status="PASS" start="2025-09-18T10:53:30.438822" elapsed="0.078162"/>
+</for>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-09-18T10:53:30.531088" level="INFO">@{images} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.39")&gt; | &lt;selenium.webdr...</msg>
+<var>@{images}</var>
+<arg>${PRODUCT_IMAGE}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.516984" elapsed="0.015101"/>
+</kw>
+<return>
+<value>${names}</value>
+<value>${prices}</value>
+<value>${images}</value>
+<status status="PASS" start="2025-09-18T10:53:30.532085" elapsed="0.000000"/>
+</return>
+<msg time="2025-09-18T10:53:30.533089" level="INFO">${names} = ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Test.allTheThings() T-Shirt (Red)']</msg>
+<msg time="2025-09-18T10:53:30.533089" level="INFO">${prices} = ['$29.99', '$9.99', '$15.99', '$49.99', '$7.99', '$15.99']</msg>
+<msg time="2025-09-18T10:53:30.533089" level="INFO">${images} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="05f207d122671d222e1c4f2ae4d69436", element="f.AC47BEAFD73A80391DF28E5A40F7258A.d.DF5F839A9628DB775290053A9D7545D9.e.39")&gt;, &lt;selenium.webdriv...</msg>
+<var>${names}</var>
+<var>${prices}</var>
+<var>${images}</var>
+<doc>Retorna lista de nomes, preços e imagens de todos os produtos</doc>
+<status status="PASS" start="2025-09-18T10:53:30.316336" elapsed="0.216753"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-18T10:53:30.534088" level="INFO">Nomes dos produtos: ['Sauce Labs Backpack', 'Sauce Labs Bike Light', 'Sauce Labs Bolt T-Shirt', 'Sauce Labs Fleece Jacket', 'Sauce Labs Onesie', 'Test.allTheThings() T-Shirt (Red)']</msg>
+<arg>Nomes dos produtos: ${names}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.534088" elapsed="0.001441"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-18T10:53:30.536786" level="INFO">Preços dos produtos: ['$29.99', '$9.99', '$15.99', '$49.99', '$7.99', '$15.99']</msg>
+<arg>Preços dos produtos: ${prices}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.535529" elapsed="0.002448"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-09-18T10:53:30.537977" level="INFO">Length is 6.</msg>
+<msg time="2025-09-18T10:53:30.539300" level="INFO">${num_images} = 6</msg>
+<var>${num_images}</var>
+<arg>${images}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.537977" elapsed="0.001323"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-09-18T10:53:30.540825" level="INFO">Número de imagens: 6</msg>
+<arg>Número de imagens: ${num_images}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.539300" elapsed="0.001525"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-09-18T10:53:30.540825" elapsed="2.428279"/>
+</kw>
+<status status="PASS" start="2025-09-18T10:53:25.883016" elapsed="7.086088"/>
+</test>
+<doc>Testes de navegação e produtos no Sauce Demo</doc>
+<status status="PASS" start="2025-09-18T10:53:25.428978" elapsed="7.546769"/>
+</suite>
+<status status="PASS" start="2025-09-18T10:53:25.423947" elapsed="7.561865"/>
+</suite>
+<status status="PASS" start="2025-09-18T10:53:25.381941" elapsed="7.608438"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Ecommerce-Robot" id="s1" pass="1" fail="0" skip="0">Ecommerce-Robot</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Ecommerce-Robot.Tests</stat>
+<stat name="Products Tests" id="s1-s1-s1" pass="1" fail="0" skip="0">Ecommerce-Robot.Tests.Products Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
