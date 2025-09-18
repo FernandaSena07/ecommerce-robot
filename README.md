@@ -69,3 +69,23 @@ standard_user, locked_out_user, problem_user, performance_glitch_user, error_use
 
 - Recomendado usar Chrome compatível com o WebDriver.
 - O projeto utiliza Robot Framework 7.3.2 e Python 3.12.
+
+---
+
+## Jenkins Pipeline
+
+Este projeto possui integração com **Jenkins** para automatizar a execução dos testes Robot Framework e geração de relatórios Allure.
+
+### Fluxo da Pipeline
+
+1. Jenkins faz o **checkout** do repositório GitHub.
+2. Ativa o **ambiente virtual Python** (`venv`).
+3. Executa os testes na pasta `tests/` usando **Robot Framework**.
+4. Gera automaticamente o **relatório Allure** e disponibiliza na própria build do Jenkins.
+
+### Observações
+
+- A instalação do **Allure** no Jenkins é feita automaticamente via **Global Tool Configuration**.
+- Os testes e relatórios podem ser executados localmente pelo VS Code ou via Jenkins.
+- Histórico de builds e relatórios ficam acessíveis diretamente na interface do Jenkins.
+
