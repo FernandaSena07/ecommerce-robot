@@ -9,22 +9,24 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    // Ativa venv e roda testes Robot Framework
-                    bat 'venv\\Scripts\\Activate && robot --listener allure_robotframework tests'
+                    // Ativa o venv e executa os testes com listener do allure
+                    bat '''
+                        venv\\Scripts\\activate
+                        robot --listener allure_robotframework output/allure tests
+                    '''
                 }
             }
         }
     }
     post {
         always {
-            // Publica o relatório Allure
-           allure([
+            // Publica o relatório Allure no Jenkins
+            allure([
                 includeProperties: false,
                 jdk: '',
                 results: [[path: 'output/allure']],
                 reportBuildPolicy: 'ALWAYS'
             ])
-
         }
     }
 }
