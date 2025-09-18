@@ -1,9 +1,0 @@
-Testes de interface e UX
-Verificar títulos e mensagens de erro.
-Testar links e botões.
-Verificar redirecionamentos corretos após ações.
-
-Testes de performance e confiabilidade
-Medir tempo de carregamento da página.
-Testar com múltiplos produtos adicionados.
-Repetir login/logout várias vezes para checar estabilidade.
